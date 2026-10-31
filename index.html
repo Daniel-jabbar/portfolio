@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Daniel Jabbar - Portfolio</title>
+
+    <style>
+      /* =========================
+       GENERELT
+    ========================= */
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background-color: #292525;
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+
+      section {
+        scroll-margin-top: 80px;
+      }
+
+      /* =========================
+       NAVIGATION
+    ========================= */
+
+      nav {
+        background-color: #ff7a30;
+        padding: 18px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .nav-container {
+        max-width: 1100px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        gap: 80px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      /* =========================
+       HERO / PROFILBILLEDE
+    ========================= */
+
+      .hero {
+        width: 100%;
+        height: 520px;
+        background-color: #444;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+      }
+
+      /* =========================
+       OM MIG
+    ========================= */
+
+      .about {
+        max-width: 1050px;
+        margin: auto;
+        padding: 90px 40px 70px;
+      }
+
+      .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .about-text h2 {
+        font-size: 18px;
+        font-weight: normal;
+        margin-bottom: 20px;
+      }
+
+      .about-text p {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-top: 0;
+      }
+
+      /* =========================
+       VIDEO
+    ========================= */
+
+      .about-video {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .about-video video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .play-button {
+        width: 75px;
+        height: 75px;
+        border: none;
+        border-radius: 50%;
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      /* =========================
+       PROGRAMMER
+    ========================= */
+
+      .programs {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px 40px 90px;
+      }
+
+      .program-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 140px;
+      }
+
+      .program-column {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      .program-title {
+        margin: 0 0 10px;
+        font-size: 15px;
+      }
+
+      .program-link {
+        color: white;
+        text-decoration: none;
+        display: block;
+      }
+
+      .program-item {
+        max-width: 280px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+        transition: 0.2s;
+      }
+
+      .program-item span {
+        font-size: 14px;
+      }
+
+      .program-item img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+      }
+
+      .program-link:hover .program-item {
+        color: #ff7a30;
+        transform: translateX(5px);
+      }
+
+      /* =========================
+       PROJEKTER
+    ========================= */
+
+      .projects {
+        max-width: 1050px;
+        margin: auto;
+        padding: 20px 40px 120px;
+      }
+
+      .projects-heading {
+        font-size: 24px;
+        margin-bottom: 35px;
+      }
+
+      /* =========================
+       SEMESTER
+    ========================= */
+
+      .semester {
+        margin-bottom: 30px;
+      }
+
+      .semester-button {
+        width: 100%;
+        background-color: transparent;
+        color: white;
+        border: 2px solid #ff7a30;
+        padding: 22px 25px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        font-size: 18px;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .semester-button:hover {
+        background-color: #ff7a30;
+      }
+
+      .arrow {
+        font-size: 20px;
+        transition: transform 0.3s;
+      }
+
+      .semester-button.open .arrow {
+        transform: rotate(180deg);
+      }
+
+      .semester-content {
+        display: none;
+        padding-top: 25px;
+      }
+
+      .semester-content.show {
+        display: block;
+      }
+
+      /* =========================
+       PROJEKTKORT
+    ========================= */
+
+      .project-card {
+        border: 3px solid #ff7a30;
+        padding: 25px;
+        margin-bottom: 25px;
+
+        display: grid;
+        grid-template-columns: 180px 1fr 180px;
+        gap: 30px;
+        align-items: center;
+
+        min-height: 180px;
+      }
+
+      .project-info h3 {
+        margin: 0 0 15px;
+        font-size: 20px;
+        font-weight: normal;
+      }
+
+      .project-type {
+        font-size: 15px;
+        line-height: 1.4;
+      }
+
+      .project-description {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .project-image {
+        width: 100%;
+        height: 130px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .project-link {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 8px 14px;
+
+        border: 1px solid #ff7a30;
+
+        color: #ff7a30;
+        text-decoration: none;
+
+        font-size: 13px;
+        font-weight: bold;
+
+        transition: 0.2s;
+      }
+
+      .project-link:hover {
+        background-color: #ff7a30;
+        color: white;
+      }
+
+      /* =========================
+       FOOTER / KONTAKT
+    ========================= */
+
+      footer {
+        background-color: #ff7a30;
+        padding: 35px 30px;
+      }
+
+      .footer-container {
+        max-width: 1000px;
+        margin: auto;
+
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+
+        text-align: center;
+      }
+
+      .footer-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-item h4 {
+        margin: 0 0 10px;
+        font-size: 13px;
+        font-weight: normal;
+      }
+
+      .footer-item p,
+      .footer-item a {
+        margin: 0;
+        color: white;
+        font-size: 12px;
+        text-decoration: none;
+      }
+
+      .footer-icon {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        margin-bottom: 10px;
+        transition: 0.2s;
+      }
+
+      .footer-item a:hover .footer-icon {
+        transform: scale(1.15);
+      }
+
+      .footer-item a:hover {
+        text-decoration: underline;
+      }
+
+      /* =========================
+       TABLET
+    ========================= */
+
+      @media (max-width: 900px) {
+        .nav-container {
+          gap: 45px;
+        }
+
+        .hero {
+          height: 350px;
+        }
+
+        .project-card {
+          grid-template-columns: 150px 1fr;
+        }
+
+        .project-image {
+          grid-column: 1 / -1;
+          height: 220px;
+        }
+      }
+
+      /* =========================
+       MOBIL
+    ========================= */
+
+      @media (max-width: 650px) {
+        nav {
+          padding: 15px 10px;
+        }
+
+        .nav-container {
+          gap: 18px;
+        }
+
+        nav a {
+          font-size: 12px;
+        }
+
+        .hero {
+          height: 280px;
+        }
+
+        .about {
+          padding: 60px 25px;
+        }
+
+        .about-container {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .programs {
+          padding: 20px 25px 70px;
+        }
+
+        .program-container {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+
+        .projects {
+          padding: 20px 20px 80px;
+        }
+
+        .project-card {
+          grid-template-columns: 1fr;
+          padding: 20px;
+        }
+
+        .project-image {
+          grid-column: auto;
+          height: 180px;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+    <nav>
+      <div class="nav-container">
+        <a href="#om-mig">Om mig</a>
+
+        <a href="#programmer">Programmer</a>
+
+        <a href="#projekter">Projekter</a>
+
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </nav>
+
+    <!-- =========================
+       PROFILBILLEDE
+  ========================== -->
+
+    <section class="hero">
+      <img src="images/profil .png" alt="Daniel Jabbar" />
+    </section>
+
+    <!-- =========================
+       OM MIG
+  ========================== -->
+
+    <section class="about" id="om-mig">
+      <div class="about-container">
+        <div class="about-text">
+          <h2>Om mig:</h2>
+
+          <p>
+            Jeg hedder Daniel Jabbar og er multimediedesigner under uddannelse.
+            Jeg arbejder med digitalt design og webudvikling og fokuserer på at
+            skabe enkle og brugervenlige løsninger med et professionelt udtryk.
+          </p>
+
+          <p>
+            Jeg arbejder blandt andet med Figma, Visual Studio Code og
+            Adobe-programmer og har valgt Advanced Media Production som valgfag,
+            hvor jeg arbejder videre med visuel kommunikation og produktion af
+            digitalt medieindhold.
+          </p>
+        </div>
+
+        <div class="about-video">
+          <video controls>
+            <source src="video/om-mig.mp4" type="video/mp4" />
+            Din browser understøtter ikke video.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+       PROGRAMMER
+  ========================== -->
+
+    <section class="programs" id="programmer">
+      <div class="program-container">
+        <!-- FIGMA OG VS CODE -->
+
+        <div class="program-column">
+          <p class="program-title">Programmer:</p>
+
+          <a
+            href="https://www.figma.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="program-link"
+          >
+            <div class="program-item">
+              <span>Figma</span>
+
+              <img src="images/figma.png" alt="Figma" />
+            </div>
+          </a>
+
+          <a
+            href="https://code.visualstudio.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="program-link"
+          >
+            <div class="program-item">
+              <span>Visual Studio Code</span>
+
+              <img src="images/visualstudiocode.png" alt="Visual Studio Code" />
+            </div>
+          </a>
+        </div>
+
+        <!-- ADOBE -->
+
+        <div class="program-column">
+          <p class="program-title">Adobe programmer:</p>
+
+          <a
+            href="https://www.adobe.com/products/photoshop.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="program-link"
+          >
+            <div class="program-item">
+              <span>Photoshop</span>
+
+              <img src="images/photoshop.png" alt="Adobe Photoshop" />
+            </div>
+          </a>
+
+          <a
+            href="https://www.adobe.com/products/illustrator.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="program-link"
+          >
+            <div class="program-item">
+              <span>Illustrator</span>
+
+              <img src="images/illustrator.png" alt="Adobe Illustrator" />
+            </div>
+          </a>
+
+          <a
+            href="https://www.adobe.com/products/premiere.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="program-link"
+          >
+            <div class="program-item">
+              <span>Premiere Pro</span>
+
+              <img src="images/premierepro.png" alt="Adobe Premiere Pro" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+       PROJEKTER
+  ========================== -->
+
+    <section class="projects" id="projekter">
+      <h2 class="projects-heading">Mine projekter</h2>
+
+      <!-- =====================
+         1. SEMESTER
+    ====================== -->
+
+      <div class="semester">
+        <button
+          class="semester-button"
+          onclick="toggleSemester('semester1', this)"
+        >
+          <span>1. semester</span>
+
+          <span class="arrow">▼</span>
+        </button>
+
+        <div class="semester-content" id="semester1">
+          <!-- FLOW 1 -->
+
+          <article class="project-card">
+            <div class="project-info">
+              <h3>Flow 1</h3>
+
+              <p class="project-type">Prototype med Figma</p>
+
+              <a
+                class="project-link"
+                href="https://www.figma.com/design/6aZQo6HbAyvwfAuoCSn0a8/Prototype-til-website?node-id=0-1&t=9YzCb3MvL1i43dMa-1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Se projekt
+              </a>
+            </div>
+
+            <div class="project-description">
+              <p>
+                I projektet arbejdede jeg med udviklingen af en prototype i
+                Figma. Fokus var på brugeroplevelse, struktur og digitalt
+                design.
+              </p>
+            </div>
+
+            <div class="project-image">
+              <img
+                src="images/flow-1-semester-1.png"
+                alt="Flow 1 - 1. semester"
+              />
+            </div>
+          </article>
+
+          <!-- FLOW 2 -->
+
+          <article class="project-card">
+            <div class="project-info">
+              <h3>Flow 2</h3>
+
+              <p class="project-type">HTML og CSS</p>
+
+              <a
+                class="project-link"
+                href="https://daniel-jabbar.github.io/kommunalvalg2025/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Se projekt
+              </a>
+            </div>
+
+            <div class="project-description">
+              <p>
+                Her arbejdede jeg med HTML og CSS og lærte at bygge og
+                strukturere en hjemmeside fra bunden.
+              </p>
+            </div>
+
+            <div class="project-image">
+              <img
+                src="images/flow-2-semester-1.png"
+                alt="Flow 2 - 1. semester"
+              />
+            </div>
+          </article>
+
+          <!-- FLOW 3 -->
+
+          <article class="project-card">
+            <div class="project-info">
+              <h3>Flow 3</h3>
+
+              <p class="project-type">Visuelt koncept</p>
+
+              <a
+                class="project-link"
+                href="https://www.figma.com/board/C8cP8ZAvAbj9AC6Y1oDRUK/Musikudgivelse?node-id=0-1&t=Q9FRi1VLxsiAl141-1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Se projekt
+              </a>
+            </div>
+
+            <div class="project-description">
+              <p>
+                Projektet fokuserede på udviklingen af et visuelt koncept og
+                arbejdet med grafisk kommunikation.
+              </p>
+            </div>
+
+            <div class="project-image">
+              <img
+                src="images/flow-3-semester-1.png"
+                alt="Flow 3 - 1. semester"
+              />
+            </div>
+          </article>
+
+          <!-- FLOW 4 -->
+
+          <article class="project-card">
+            <div class="project-info">
+              <h3>Flow 4</h3>
+
+              <p class="project-type">Kampagne på tværs af platforme</p>
+
+              <a
+                class="project-link"
+                href="https://www.figma.com/board/AypxH0D0K0ZKwQoHVwtHfy/Flowprojekt-4---Levi-s?node-id=0-1&t=RvbuSuDwvCiQJUdg-1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Se projekt
+              </a>
+            </div>
+
+            <div class="project-description">
+              <p>
+                Her arbejdede jeg med en kampagne og med at skabe et
+                sammenhængende visuelt udtryk på forskellige platforme.
+              </p>
+            </div>
+
+            <div class="project-image">
+              <img
+                src="images/flow-4-semester-1.png"
+                alt="Flow 4 - 1. semester"
+              />
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- =====================
+         2. SEMESTER
+    ====================== -->
+
+      <div class="semester">
+        <button
+          class="semester-button"
+          onclick="toggleSemester('semester2', this)"
+        >
+          <span>2. semester</span>
+
+          <span class="arrow">▼</span>
+        </button>
+
+        <div class="semester-content" id="semester2">
+          <!-- FLOW 1 -->
+
+          <article class="project-card">
+            <div class="project-info">
+              <h3>Flow 1</h3>
+
+              <p class="project-type">WordPress og SEO</p>
+              <a
+                class="project-link"
+                href="https://danieljabbar.dk/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Se projekt
+              </a>
+            </div>
+
+            <div class="project-description">
+              <p>
+                I projektet arbejdede jeg med WordPress, opbygning af hjemmeside
+                og grundlæggende SEO.
+              </p>
+            </div>
+
+            <div class="project-image">
+              <img
+                src="images/flow-1-semester-2.png"
+                alt="Flow 1 - 2. semester"
+              />
+            </div>
+          </article>
+
+          <!-- FLOW 2 -->
+
+          <article class="project-card">
+            <div class="project-info">
+              <h3>Flow 2</h3>
+
+              <p class="project-type">Design Thinking og avanceret Figma</p>
+              <a
+                class="project-link"
+                href="https://www.figma.com/board/1c2ScPXq6mH6lSJ8UNoyYv/flow-2?node-id=0-1&t=tjn0OJO9Yt7OA57p-1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Se projekt
+              </a>
+            </div>
+
+            <div class="project-description">
+              <p>
+                Projektet arbejdede med Design Thinking, research, idéudvikling
+                og udvikling af en avanceret prototype i Figma.
+              </p>
+            </div>
+
+            <div class="project-image">
+              <img
+                src="images/flow-2-semester-2.png"
+                alt="Flow 2 - 2. semester"
+              />
+            </div>
+          </article>
+
+          <!-- FLOW 3 / SWEET SHOP -->
+
+          <article class="project-card">
+            <div class="project-info">
+              <h3>Flow 3</h3>
+
+              <p class="project-type">Sweet Shop</p>
+
+              <a
+                class="project-link"
+                href="https://daniel-jabbar.github.io/sweet-shop/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Se projekt
+              </a>
+            </div>
+
+            <div class="project-description">
+              <p>
+                I Sweet Shop arbejdede jeg med HTML, CSS og JavaScript og
+                udviklede en interaktiv webshop med produkter og kurv.
+              </p>
+            </div>
+
+            <div class="project-image">
+              <img src="images/flow-3-semester-2.png" alt="Sweet Shop" />
+            </div>
+          </article>
+
+          <!-- FLOW 4 -->
+
+          <article class="project-card">
+            <div class="project-info">
+              <h3>Flow 4</h3>
+
+              <p class="project-type">Oplysningskampagne</p>
+              <a
+                class="project-link"
+                href="https://www.figma.com/design/WysA8c6XubjcVT9ExocFIf/Flow-4?node-id=0-1&t=qlRHLbGX2pfjxvEt-1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Se projekt
+              </a>
+            </div>
+
+            <div class="project-description">
+              <p>
+                I projektet udviklede jeg en oplysningskampagne med fokus på
+                kommunikation, design og digitale medier.
+              </p>
+            </div>
+
+            <div class="project-image">
+              <img
+                src="images/flow-4-semester-2.png"
+                alt="Flow 4 - 2. semester"
+              />
+            </div>
+          </article>
+
+          <!-- FLOW 5 -->
+
+          <article class="project-card">
+            <div class="project-info">
+              <h3>Flow 5</h3>
+
+              <p class="project-type">Eksamensprojekt</p>
+
+              <a
+                class="project-link"
+                href="http://madmedomtanke.danieljabbar.dk/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Se projekt
+              </a>
+            </div>
+
+            <div class="project-description">
+              <p>
+                Mit eksamensprojekt samlede arbejdet med design, research,
+                frontend og digital kommunikation.
+              </p>
+            </div>
+
+            <div class="project-image">
+              <img
+                src="images/flow-5-semester-2.png"
+                alt="Flow 5 - 2. semester"
+              />
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+       KONTAKT
+  ========================== -->
+
+    <footer id="kontakt">
+      <div class="footer-container">
+        <!-- LINKEDIN -->
+        <div class="footer-item">
+          <a
+            href="https://www.linkedin.com/in/daniel-jabbar-40a943437/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="images/linkedin.png" class="footer-icon" alt="LinkedIn" />
+            <h4>LinkedIn</h4>
+          </a>
+        </div>
+
+        <!-- MAIL -->
+        <div class="footer-item">
+          <a href="mailto:danieljabbar920@gmail.com">
+            <img src="images/mail.png" class="footer-icon" alt="Mail" />
+            <h4>Mail</h4>
+          </a>
+        </div>
+
+        <!-- INSTAGRAM -->
+        <div class="footer-item">
+          <a
+            href="https://www.instagram.com/danieljabbar/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="images/instagram.png"
+              class="footer-icon"
+              alt="Instagram"
+            />
+            <h4>Instagram</h4>
+          </a>
+        </div>
+
+        <!-- FACEBOOK -->
+        <div class="footer-item">
+          <a
+            href="https://www.facebook.com/danieljabbar"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="images/facebook.png" class="footer-icon" alt="Facebook" />
+            <h4>Facebook</h4>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+    <script>
+      function toggleSemester(semesterId, button) {
+        const semester = document.getElementById(semesterId);
+
+        semester.classList.toggle("show");
+
+        button.classList.toggle("open");
+      }
+    </script>
+  </body>
+</html>
